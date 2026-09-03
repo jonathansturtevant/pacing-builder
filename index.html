@@ -1,17 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Precalculus Pacing Builder</title>
-</head>
-<body>
-  <script>
-    window.PACING_API_URL = "https://script.google.com/macros/s/AKfycbwg8CQGCDnEFWAZZ9OhNO71jVEdE168VKB1dgLfDu5atJq4OJjUE-V0-v07PHhYyjZo/exec";
-    window.PACING_COURSE_ID = "precalculus";
-  </script>
-
-  <title>Precalculus Pacing Builder</title>
+<title>Precalculus Pacing Builder</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -533,6 +520,13 @@
       <p class="sub">Set your semester's dates once a year — the calendar rebuilds itself around them.</p>
     </div>
     <div class="top-actions">
+      <label style="display:flex; align-items:center; gap:8px; font-size:12px; font-weight:600; text-transform:uppercase; letter-spacing:0.04em; color:var(--ink-soft);">
+        <span>Course</span>
+        <select id="courseSelector" style="font-family:var(--font-body); font-size:13px; padding:7px 10px; border-radius:6px; border:1px solid var(--line-strong); background:var(--surface); color:var(--ink);">
+          <option value="precalculus">Precalculus</option>
+          <option value="ap-precalculus">AP Precalculus</option>
+        </select>
+      </label>
       <button class="ghost" id="curriculumToggleBtn" type="button">Edit Curriculum</button>
       <button class="ghost" id="resetBtn" type="button">Reset dates</button>
       <button id="printBtn" type="button">Print / Save PDF</button>
@@ -672,14 +666,17 @@
     s2: TERM_DEFAULTS.s2,
   };
 
+  window.PACING_API_URL = window.PACING_API_URL || "https://script.google.com/macros/s/AKfycbwg8CQGCDnEFWAZZ9OhNO71jVEdE168VKB1dgLfDu5atJq4OJjUE-V0-v07PHhYyjZo/exec";
+  window.PACING_COURSE_ID = window.PACING_COURSE_ID || "precalculus";
+
   const COURSE_ID = (() => {
     const params = new URLSearchParams(window.location.search);
-    const explicit = params.get("course") || window.PACING_COURSE_ID || "default-course";
+    const explicit = params.get("course") || window.PACING_COURSE_ID || "precalculus";
     return String(explicit).trim().toLowerCase().replace(/[^a-z0-9-_]+/g, "-");
   })();
   const SHARED_API_URL = (() => {
     const params = new URLSearchParams(window.location.search);
-    const explicitApi = params.get("api") || window.PACING_API_URL || "";
+    const explicitApi = params.get("api") || window.PACING_API_URL || "https://script.google.com/macros/s/AKfycbwg8CQGCDnEFWAZZ9OhNO71jVEdE168VKB1dgLfDu5atJq4OJjUE-V0-v07PHhYyjZo/exec";
     return String(explicitApi).trim();
   })();
   const STORAGE_KEY = `precalc-pacing-builder-state-v3-${COURSE_ID}`;
@@ -821,7 +818,19 @@
     addCurriculumBtn: document.getElementById("addCurriculumBtn"),
     curriculumResetBtn: document.getElementById("curriculumResetBtn"),
     semTabs: Array.from(document.querySelectorAll(".sem-tab")),
+    courseSelector: document.getElementById("courseSelector"),
   };
+
+  if (els.courseSelector) {
+    els.courseSelector.value = COURSE_ID;
+    els.courseSelector.addEventListener("change", () => {
+      const nextCourse = els.courseSelector.value;
+      const url = new URL(window.location.href);
+      url.searchParams.set("course", nextCourse);
+      window.history.replaceState({}, "", url);
+      window.location.reload();
+    });
+  }
 
   function renderNoSchoolRows() {
     const cfg = active();
@@ -1165,6 +1174,3 @@
   // ---------- init ----------
   initApp();
 </script>
-
-</body>
-</html>
