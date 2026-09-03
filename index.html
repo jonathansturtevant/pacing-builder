@@ -1,3 +1,23 @@
+<script>
+  window.PACING_API_URL =
+    "https://script.google.com/macros/s/AKfycbwg8CQGCDnEFWAZZ9OhNO71jVEdE168VKB1dgLfDu5atJq4OJjUE-V0-v07PHhYyjZo/exec";
+
+  // Default course when the page loads
+  window.PACING_COURSE_ID = "precalculus";
+</script>
+<script>
+  const COURSE_ID = (() => {
+    const params = new URLSearchParams(window.location.search);
+    const explicit = params.get("course") || window.PACING_COURSE_ID || "precalculus";
+    return String(explicit).trim().toLowerCase().replace(/[^a-z0-9-_]+/g, "-");
+  })();
+
+  const SHARED_API_URL = (() => {
+    const params = new URLSearchParams(window.location.search);
+    const explicitApi = params.get("api") || window.PACING_API_URL || "";
+    return String(explicitApi).trim();
+  })();
+</script>
 <title>Precalculus Pacing Builder</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
