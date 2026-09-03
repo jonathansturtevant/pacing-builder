@@ -1,0 +1,1170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Precalculus Pacing Builder</title>
+</head>
+<body>
+  <script>
+    window.PACING_API_URL = "https://script.google.com/macros/s/AKfycbwg8CQGCDnEFWAZZ9OhNO71jVEdE168VKB1dgLfDu5atJq4OJjUE-V0-v07PHhYyjZo/exec";
+    window.PACING_COURSE_ID = "precalculus";
+  </script>
+
+  <title>Precalculus Pacing Builder</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --bg: #F2F3F6;
+    --bg-grid-line: rgba(30,37,54,0.05);
+    --surface: #FFFFFF;
+    --surface-2: #FBFBFD;
+    --ink: #1E2536;
+    --ink-soft: #5B6472;
+    --ink-faint: #8991A0;
+    --line: #DCDFE6;
+    --line-strong: #C4C9D3;
+    --accent: #B9791F;
+    --accent-ink: #7A5417;
+    --accent-bg: #F5E9D3;
+    --live: #35648E;
+    --live-ink: #24455F;
+    --live-bg: #E3EDF6;
+    --noschool: #6E7684;
+    --noschool-bg: #E7E9ED;
+    --flag: #A8481F;
+    --flag-bg: #F7E1D3;
+    --danger: #A8341F;
+    --shadow: 0 1px 2px rgba(30,37,54,0.06), 0 8px 24px -12px rgba(30,37,54,0.18);
+    --radius: 10px;
+    --font-display: "Newsreader", Georgia, "Times New Roman", serif;
+    --font-body: "Public Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    --font-mono: "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #12151C;
+      --bg-grid-line: rgba(231,234,240,0.05);
+      --surface: #1B1F29;
+      --surface-2: #20242F;
+      --ink: #E7EAF0;
+      --ink-soft: #A2AAB8;
+      --ink-faint: #757E8D;
+      --line: #2C313D;
+      --line-strong: #3A4150;
+      --accent: #E1AC55;
+      --accent-ink: #F3CD8B;
+      --accent-bg: #3A2F1B;
+      --live: #86B4DE;
+      --live-ink: #BBD7EF;
+      --live-bg: #22334A;
+      --noschool: #949CAA;
+      --noschool-bg: #262B35;
+      --flag: #E38F62;
+      --flag-bg: #3B2A1E;
+      --danger: #E38F62;
+      --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 8px 24px -12px rgba(0,0,0,0.5);
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #12151C;
+    --bg-grid-line: rgba(231,234,240,0.05);
+    --surface: #1B1F29;
+    --surface-2: #20242F;
+    --ink: #E7EAF0;
+    --ink-soft: #A2AAB8;
+    --ink-faint: #757E8D;
+    --line: #2C313D;
+    --line-strong: #3A4150;
+    --accent: #E1AC55;
+    --accent-ink: #F3CD8B;
+    --accent-bg: #3A2F1B;
+    --live: #86B4DE;
+    --live-ink: #BBD7EF;
+    --live-bg: #22334A;
+    --noschool: #949CAA;
+    --noschool-bg: #262B35;
+    --flag: #E38F62;
+    --flag-bg: #3B2A1E;
+    --danger: #E38F62;
+    --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 8px 24px -12px rgba(0,0,0,0.5);
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background:
+      repeating-linear-gradient(0deg, var(--bg-grid-line) 0 1px, transparent 1px 28px),
+      repeating-linear-gradient(90deg, var(--bg-grid-line) 0 1px, transparent 1px 28px),
+      var(--bg);
+    color: var(--ink);
+    font-family: var(--font-body);
+    font-size: 15px;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--live); }
+
+  .wrap {
+    max-width: 1360px;
+    margin: 0 auto;
+    padding: 28px 28px 64px;
+  }
+
+  header.top {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 24px;
+    flex-wrap: wrap;
+    padding-bottom: 22px;
+    margin-bottom: 22px;
+    border-bottom: 1px solid var(--line);
+  }
+  header.top .title-block { max-width: 640px; }
+  h1 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 30px;
+    letter-spacing: -0.01em;
+    margin: 0 0 4px;
+    text-wrap: balance;
+    color: var(--ink);
+  }
+  header.top p.sub {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 400;
+    font-size: 16px;
+    color: var(--ink-soft);
+    margin: 0;
+  }
+  .top-actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  button {
+    font-family: var(--font-body);
+    font-size: 13.5px;
+    font-weight: 600;
+    border-radius: 7px;
+    border: 1px solid var(--line-strong);
+    background: var(--surface);
+    color: var(--ink);
+    padding: 9px 15px;
+    cursor: pointer;
+    transition: border-color .15s ease, background .15s ease, transform .05s ease;
+  }
+  button:hover { border-color: var(--ink-faint); }
+  button:active { transform: translateY(1px); }
+  button:focus-visible, input:focus-visible, select:focus-visible {
+    outline: 2px solid var(--live);
+    outline-offset: 2px;
+  }
+  button.primary {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #2A1B04;
+  }
+  button.primary:hover { filter: brightness(1.05); }
+  button.ghost {
+    background: transparent;
+    border-color: transparent;
+    color: var(--ink-soft);
+    padding: 9px 10px;
+  }
+  button.ghost:hover { color: var(--ink); text-decoration: underline; }
+  button.icon-btn {
+    padding: 6px 9px;
+    font-size: 12px;
+    color: var(--danger);
+    border-color: var(--line);
+  }
+
+  .layout {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    gap: 24px;
+    align-items: start;
+  }
+  @media (max-width: 940px) {
+    .layout { grid-template-columns: 1fr; }
+  }
+
+  .panel {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 18px;
+    position: sticky;
+    top: 20px;
+  }
+  @media (max-width: 940px) { .panel { position: static; } }
+
+  .panel h2 {
+    font-family: var(--font-display);
+    font-size: 17px;
+    font-weight: 600;
+    margin: 0 0 2px;
+  }
+  .panel .panel-note {
+    font-size: 12.5px;
+    color: var(--ink-faint);
+    margin: 0 0 16px;
+    line-height: 1.5;
+  }
+
+  .field { margin-bottom: 14px; }
+  .field label {
+    display: block;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--ink-soft);
+    margin-bottom: 5px;
+  }
+  .field input[type="date"],
+  .field select {
+    width: 100%;
+    font-family: var(--font-mono);
+    font-size: 13.5px;
+    padding: 7px 9px;
+    border-radius: 6px;
+    border: 1px solid var(--line-strong);
+    background: var(--surface-2);
+    color: var(--ink);
+  }
+  .field-row { display: flex; gap: 10px; }
+  .field-row .field { flex: 1; }
+
+  .section-divider {
+    border: none;
+    border-top: 1px solid var(--line);
+    margin: 18px 0 14px;
+  }
+
+  .noschool-list { display: flex; flex-direction: column; gap: 8px; margin-bottom: 10px; }
+  .noschool-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr auto;
+    gap: 6px;
+    align-items: center;
+    background: var(--surface-2);
+    border: 1px solid var(--line);
+    border-radius: 7px;
+    padding: 7px;
+  }
+  .noschool-row input[type="date"] {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    padding: 5px 6px;
+    border-radius: 5px;
+    border: 1px solid var(--line-strong);
+    background: var(--surface);
+    color: var(--ink);
+    width: 100%;
+  }
+  .noschool-row input[type="text"] {
+    grid-column: 1 / span 2;
+    font-family: var(--font-body);
+    font-size: 12.5px;
+    padding: 5px 7px;
+    border-radius: 5px;
+    border: 1px solid var(--line-strong);
+    background: var(--surface);
+    color: var(--ink);
+    width: 100%;
+  }
+  .noschool-row .remove-cell { grid-row: 1 / span 2; align-self: center; }
+
+  .add-row-btn {
+    width: 100%;
+    font-size: 12.5px;
+    padding: 8px;
+    border-style: dashed;
+    color: var(--ink-soft);
+  }
+
+  .generate-row { margin-top: 16px; display: flex; flex-direction: column; gap: 8px; }
+  .generate-row button.primary { width: 100%; font-size: 14px; padding: 11px; }
+
+  .status-box {
+    margin-top: 14px;
+    padding: 10px 12px;
+    border-radius: 7px;
+    font-size: 12.5px;
+    line-height: 1.5;
+    background: var(--live-bg);
+    color: var(--live-ink);
+    border: 1px solid transparent;
+  }
+  .status-box.flagged {
+    background: var(--flag-bg);
+    color: var(--flag);
+  }
+  .status-box .count {
+    font-family: var(--font-mono);
+    font-weight: 600;
+  }
+
+  main.calendar-area { min-width: 0; }
+
+  .sem-tabs {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid var(--line);
+  }
+  .sem-tab {
+    font-family: var(--font-body);
+    font-size: 13.5px;
+    font-weight: 600;
+    padding: 9px 18px;
+    border: 1px solid transparent;
+    border-bottom: none;
+    border-radius: 7px 7px 0 0;
+    background: transparent;
+    color: var(--ink-soft);
+    cursor: pointer;
+    transform: translateY(1px);
+  }
+  .sem-tab:hover { color: var(--ink); }
+  .sem-tab.active {
+    background: var(--surface);
+    border-color: var(--line);
+    color: var(--live-ink);
+    box-shadow: 0 -1px 0 var(--surface);
+  }
+  @media print { .sem-tabs { display: none !important; } }
+
+  .curriculum-editor {
+    margin-bottom: 22px;
+    position: static;
+  }
+  .curriculum-editor-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 14px;
+  }
+  .curriculum-editor-head .panel-note { max-width: 560px; }
+  .curriculum-table-wrap {
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .curriculum-header-row {
+    display: grid;
+    grid-template-columns: 44px 1fr 160px 84px;
+    gap: 8px;
+    background: var(--live-ink);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 8px 10px;
+  }
+  .curriculum-list { max-height: 480px; overflow-y: auto; }
+  .curriculum-row {
+    display: grid;
+    grid-template-columns: 44px 1fr 160px 84px;
+    gap: 8px;
+    align-items: start;
+    padding: 8px 10px;
+    border-top: 1px solid var(--line);
+    background: var(--surface);
+  }
+  .curriculum-row:nth-child(even) { background: var(--surface-2); }
+  .curriculum-row .idx {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--ink-faint);
+    padding-top: 6px;
+    font-variant-numeric: tabular-nums;
+  }
+  .curriculum-row textarea {
+    width: 100%;
+    min-height: 40px;
+    resize: vertical;
+    font-family: var(--font-body);
+    font-size: 12.5px;
+    padding: 6px 8px;
+    border-radius: 5px;
+    border: 1px solid var(--line-strong);
+    background: var(--surface);
+    color: var(--ink);
+  }
+  .curriculum-row input[type="text"] {
+    width: 100%;
+    font-family: var(--font-body);
+    font-size: 12.5px;
+    padding: 6px 8px;
+    border-radius: 5px;
+    border: 1px solid var(--line-strong);
+    background: var(--surface);
+    color: var(--live-ink);
+    font-weight: 600;
+  }
+  .curriculum-row .row-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    align-items: stretch;
+  }
+  .curriculum-row .row-actions button {
+    padding: 3px 6px;
+    font-size: 11px;
+    line-height: 1.2;
+  }
+
+  .legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    font-size: 12px;
+    color: var(--ink-soft);
+    margin-bottom: 16px;
+  }
+  .legend .chip { display: inline-flex; align-items: center; gap: 6px; }
+  .legend .swatch { width: 11px; height: 11px; border-radius: 3px; display: inline-block; }
+
+  .month-block { margin-bottom: 30px; }
+  .month-block h3 {
+    font-family: var(--font-display);
+    font-size: 20px;
+    font-weight: 600;
+    margin: 0 0 10px;
+    color: var(--ink);
+  }
+
+  .cal-scroll { overflow-x: auto; }
+  table.cal {
+    width: 100%;
+    min-width: 760px;
+    border-collapse: collapse;
+    table-layout: fixed;
+  }
+  table.cal th {
+    font-family: var(--font-body);
+    font-size: 11.5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #fff;
+    background: var(--live-ink);
+    padding: 7px 8px;
+    text-align: left;
+    border: 1px solid var(--line);
+  }
+  table.cal td {
+    vertical-align: top;
+    border: 1px solid var(--line);
+    padding: 6px 7px;
+    height: 78px;
+    background: var(--surface);
+  }
+  table.cal td .daynum {
+    font-family: var(--font-mono);
+    font-variant-numeric: tabular-nums;
+    font-weight: 600;
+    font-size: 12px;
+    color: var(--ink-faint);
+    display: block;
+    margin-bottom: 3px;
+  }
+  table.cal td .content {
+    font-size: 11.5px;
+    line-height: 1.35;
+    color: var(--ink);
+    white-space: pre-line;
+  }
+  table.cal td .live-tag {
+    display: block;
+    margin-top: 3px;
+    font-weight: 700;
+    font-style: italic;
+  }
+  table.cal td.noschool { background: var(--noschool-bg); }
+  table.cal td.noschool .daynum,
+  table.cal td.noschool .content { color: var(--noschool); font-weight: 600; }
+  table.cal td.liveclass { background: var(--live-bg); }
+  table.cal td.liveclass .live-tag { color: var(--live-ink); }
+  table.cal td.flagged { background: var(--flag-bg); }
+  table.cal td.flagged .live-tag { color: var(--flag); }
+  table.cal td.policy .content { font-weight: 600; }
+  table.cal td.outmonth { opacity: 0.45; }
+
+  footer.hint {
+    margin-top: 8px;
+    font-size: 12px;
+    color: var(--ink-faint);
+  }
+
+  @media print {
+    body { background: #fff; }
+    .panel, .top-actions, .legend .print-hide { display: none !important; }
+    .layout { grid-template-columns: 1fr; }
+    .wrap { padding: 0; max-width: none; }
+    .month-block { break-inside: avoid; page-break-inside: avoid; }
+    table.cal { min-width: 0; }
+    header.top { border-bottom: 2px solid #000; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; }
+  }
+</style>
+
+<div class="wrap">
+  <header class="top">
+    <div class="title-block">
+      <h1>Precalculus Pacing Builder</h1>
+      <p class="sub">Set your semester's dates once a year — the calendar rebuilds itself around them.</p>
+    </div>
+    <div class="top-actions">
+      <button class="ghost" id="curriculumToggleBtn" type="button">Edit Curriculum</button>
+      <button class="ghost" id="resetBtn" type="button">Reset dates</button>
+      <button id="printBtn" type="button">Print / Save PDF</button>
+    </div>
+  </header>
+
+  <div class="sem-tabs" id="semTabs" role="tablist">
+    <button type="button" class="sem-tab" data-sem="s1" role="tab">Semester 1</button>
+    <button type="button" class="sem-tab" data-sem="s2" role="tab">Semester 2</button>
+  </div>
+
+  <section class="panel curriculum-editor" id="curriculumEditor" hidden>
+    <div class="curriculum-editor-head">
+      <div>
+        <h2 id="curriculumEditorTitle">Curriculum Sequence — Semester 1</h2>
+        <p class="panel-note" style="margin-bottom:0;">
+          One row per school day of content, in teaching order. Fix an item's text directly, reorder with
+          the arrows, remove a day with ✕, or add a new day/section at the end. Changes apply on Generate.
+        </p>
+      </div>
+      <button class="ghost" id="curriculumResetBtn" type="button">Reset content to original items</button>
+    </div>
+    <div class="curriculum-table-wrap">
+      <div class="curriculum-header-row">
+        <span>#</span><span>Content</span><span>LiveClass label</span><span></span>
+      </div>
+      <div id="curriculumList" class="curriculum-list"></div>
+    </div>
+    <button class="add-row-btn" id="addCurriculumBtn" type="button">+ Add a day at the end</button>
+  </section>
+
+  <div class="layout">
+    <aside class="panel">
+      <h2 id="setupTitle">Semester 1 Setup</h2>
+      <p class="panel-note">Edit these each year, then Generate. Your entries are saved in this browser automatically.</p>
+
+      <div class="field">
+        <label for="startDate">Course start date</label>
+        <input type="date" id="startDate">
+      </div>
+      <div class="field">
+        <label for="liveWeekday">LiveClass day of week</label>
+        <select id="liveWeekday">
+          <option value="1">Monday</option>
+          <option value="2">Tuesday</option>
+          <option value="3" selected>Wednesday</option>
+          <option value="4">Thursday</option>
+          <option value="5">Friday</option>
+        </select>
+      </div>
+
+      <hr class="section-divider">
+
+      <div class="field">
+        <label for="cutoffDate">No new assignments after</label>
+        <input type="date" id="cutoffDate">
+      </div>
+      <div class="field">
+        <label for="deadlineDate" id="deadlineLabel">Semester deadline</label>
+        <input type="date" id="deadlineDate">
+      </div>
+      <div class="field">
+        <label for="endDate" id="endLabel">End of semester</label>
+        <input type="date" id="endDate">
+      </div>
+
+      <hr class="section-divider">
+
+      <label style="display:block; font-size:12px; font-weight:600; text-transform:uppercase; letter-spacing:0.04em; color:var(--ink-soft); margin-bottom:8px;">No-school dates</label>
+      <div class="noschool-list" id="noSchoolList"></div>
+      <button class="add-row-btn" id="addRowBtn" type="button">+ Add a date range</button>
+
+      <div class="generate-row">
+        <button class="primary" id="generateBtn" type="button">Generate Calendar</button>
+      </div>
+
+      <div class="status-box" id="statusBox">Ready.</div>
+    </aside>
+
+    <main class="calendar-area">
+      <div class="legend">
+        <span class="chip"><span class="swatch" style="background:var(--live-bg); border:1px solid var(--live);"></span>LiveClass day</span>
+        <span class="chip"><span class="swatch" style="background:var(--noschool-bg); border:1px solid var(--noschool);"></span>No school</span>
+        <span class="chip"><span class="swatch" style="background:var(--flag-bg); border:1px solid var(--flag);"></span>LiveClass off its usual weekday</span>
+      </div>
+      <div id="calendarOutput"></div>
+      <footer class="hint">Need to fix a lesson or add a section? Use "Edit Curriculum" above — the calendar dates in the side panel are the only thing that usually needs updating year to year.</footer>
+    </main>
+  </div>
+</div>
+
+<script>
+  const DEFAULT_CURRICULUM_S1 = [{"main": "01.00 Mastering Polynomial Functions by Exploring Change — Introduction", "live": ""}, {"main": "01.01 Change in Tandem", "live": ""}, {"main": "01.01 Change in Tandem", "live": "1.01"}, {"main": "01.02 Rates of Change", "live": ""}, {"main": "01.02 Rates of Change", "live": ""}, {"main": "01.03 Rates of Change in Linear and Quadratic Functions", "live": ""}, {"main": "01.03 Rates of Change in Linear and Quadratic Functions", "live": ""}, {"main": "01.04 Polynomial Functions and Rates of Change", "live": "1.03–1.04"}, {"main": "01.04 Polynomial Functions and Rates of Change", "live": ""}, {"main": "01.05 Mastering Polynomial Functions by Exploring Change — Mid-Module Check", "live": ""}, {"main": "01.06 Polynomial Functions and Complex Zeros", "live": ""}, {"main": "01.06 Polynomial Functions and Complex Zeros", "live": ""}, {"main": "01.07 Polynomial Functions and End Behavior", "live": "1.06–1.07"}, {"main": "01.07 Polynomial Functions and End Behavior", "live": ""}, {"main": "01.08 Transformations and Limitations of Polynomial Functions", "live": ""}, {"main": "01.08 Transformations and Limitations of Polynomial Functions", "live": ""}, {"main": "01.09 Mastering Polynomial Functions by Exploring Change — Practice Exam", "live": ""}, {"main": "Unit 1 Review / Practice Test", "live": "Unit 1 Review"}, {"main": "01.10 Mastering Polynomial Functions by Exploring Change\n\"Friday Sheet\" AP Practice Assignment", "live": ""}, {"main": "01.10 AP Practice Assignment — continued", "live": ""}, {"main": "01.11 Mastering Polynomial Functions by Exploring Change — Exam", "live": ""}, {"main": "02.00 Mastering Rational and Piecewise Functions — Introduction", "live": "Unit 2 Introduction"}, {"main": "02.01 Rational Functions and End Behavior", "live": ""}, {"main": "02.01 Rational Functions and End Behavior", "live": ""}, {"main": "02.02 Rational Functions and Zeros", "live": ""}, {"main": "02.02 Rational Functions and Zeros", "live": ""}, {"main": "02.03 Rational Functions' Vertical Asymptotes and Holes", "live": "2.01–2.03"}, {"main": "02.03 Rational Functions' Vertical Asymptotes and Holes — continued", "live": ""}, {"main": "02.04 Equivalent Representations of Expressions", "live": ""}, {"main": "02.04 Equivalent Representations of Expressions — continued", "live": ""}, {"main": "02.05 Mastering Rational and Piecewise Functions — Mid-Module Check", "live": ""}, {"main": "Mid-Module Review", "live": "2.03–2.04 + Review"}, {"main": "02.06 Function Model Selection", "live": ""}, {"main": "02.06 Function Model Selection", "live": ""}, {"main": "02.07 Function Model Construction and Application", "live": ""}, {"main": "02.07 Function Model Construction and Application — continued", "live": ""}, {"main": "02.08 Modeling Piecewise Functions", "live": "2.06–2.08"}, {"main": "02.08 Modeling Piecewise Functions — continued", "live": ""}, {"main": "02.09 Mastering Rational and Piecewise Functions — Practice Exam", "live": ""}, {"main": "02.10 Mastering Rational and Piecewise Functions\n\"Friday Sheet\" AP Practice Assignment", "live": ""}, {"main": "02.10 AP Practice Assignment — continued", "live": ""}, {"main": "02.11 Mastering Rational and Piecewise Functions — Exam", "live": ""}, {"main": "03.00 Conquering Exponential Functions and Function Applications — Introduction", "live": ""}, {"main": "03.01 Changes in Arithmetic and Geometric Sequences", "live": ""}, {"main": "03.01 Changes in Arithmetic and Geometric Sequences — continued", "live": ""}, {"main": "03.02 Change in Linear and Exponential Functions", "live": "3.01–3.02"}, {"main": "03.02 Change in Linear and Exponential Functions — continued", "live": ""}, {"main": "03.03 Exponential Function Behavior", "live": ""}, {"main": "03.03 Exponential Function Behavior — continued", "live": ""}, {"main": "03.04 Exponential Function Manipulation", "live": ""}, {"main": "03.04 Exponential Function Manipulation — continued", "live": "3.03–3.04"}, {"main": "03.05 Conquering Exponential Functions and Function Applications — Mid-Module Check", "live": ""}, {"main": "03.06 Exponential Function Context and Data Modeling", "live": ""}, {"main": "03.06 Exponential Function Context and Data Modeling — continued", "live": ""}, {"main": "03.07 Competing Function Model Validation", "live": ""}, {"main": "03.07 Competing Function Model Validation — continued", "live": "3.06–3.07"}, {"main": "03.08 Composition of Functions", "live": ""}, {"main": "03.08 Composition of Functions — continued", "live": ""}, {"main": "03.09 Invertible Functions", "live": ""}, {"main": "03.09 Invertible Functions — continued", "live": ""}, {"main": "Unit 3 Instruction / Review", "live": "3.08–3.09"}, {"main": "03.10 Conquering Exponential Functions and Function Applications — Practice Exam", "live": ""}, {"main": "Unit 3 Review / Catch-Up", "live": ""}, {"main": "Return / Unit 3 Review", "live": ""}, {"main": "03.11 Conquering Exponential Functions and Function Applications\n\"Friday Sheet\" AP Practice Assignment", "live": ""}, {"main": "03.11 AP Practice Assignment — continued", "live": "Unit 3 Review"}, {"main": "03.12 Conquering Exponential Functions and Function Applications — Exam", "live": ""}, {"main": "Semester 1 Review / Catch-Up", "live": ""}, {"main": "Segment One Exam Review", "live": ""}, {"main": "Segment One Exam Review", "live": ""}, {"main": "Semester / Segment One Final Review", "live": "Final Review"}, {"main": "03.13 Segment One Exam", "live": ""}];
+  const DEFAULT_CURRICULUM_S2 = [{"main": "LiveClass Review: 4.1-4.4", "live": ""}, {"main": "04.00 Conquering Logarithmic Functions and Modeling Introduction\n04.01 Logarithmic Expressions", "live": ""}, {"main": "04.02 Inverses of Exponential Functions", "live": ""}, {"main": "04.03 Logarithmic Function Behavior", "live": ""}, {"main": "04.04 Logarithmic Function Manipulation", "live": ""}, {"main": "04.05 Conquering Logarithmic Functions and Modeling Mid-Module Check", "live": ""}, {"main": "04.06 Exponential and Logarithmic Equations and Inequalities", "live": ""}, {"main": "04.07 Constructing Exponential and Logarithmic Inverse Functions", "live": ""}, {"main": "04.08 Logarithmic Function Context and Data Modeling", "live": "Review: 4.6-4.9"}, {"main": "04.09 Semi-log Plots", "live": ""}, {"main": "04.10 Conquering Logarithmic Functions and Modeling Practice Exam", "live": ""}, {"main": "04.11 Conquering Logarithmic Functions and Modeling \"Friday Sheet\" AP Practice Assignment", "live": ""}, {"main": "04.11 Conquering Logarithmic Functions and Modeling \"Friday Sheet\" AP Practice Assignment — continued", "live": ""}, {"main": "04.12 Conquering Logarithmic Functions and Modeling Exam", "live": "Unit 4 Review"}, {"main": "05.00 Investigating Periodic Functions Introduction", "live": ""}, {"main": "05.01 Periodic Phenomena", "live": ""}, {"main": "05.02 Radian Measure on the Unit Circle", "live": ""}, {"main": "05.02 Radian Measure on the Unit Circle — continued", "live": ""}, {"main": "05.03 Sine, Cosine, and Tangent", "live": "Review: 5.01-5.05"}, {"main": "05.04 Sine and Cosine Function Values", "live": ""}, {"main": "05.05 Sine and Cosine Function Graphs", "live": ""}, {"main": "05.06 Investigating Periodic Functions Mid-Module Check", "live": ""}, {"main": "05.07 Sinusoidal Function Behavior", "live": ""}, {"main": "05.08 Sinusoidal Function Transformations", "live": "Review: 5.07-5.11"}, {"main": "05.09 Sinusoidal Function Context and Data Modeling", "live": ""}, {"main": "05.10 Tangent Function Behavior", "live": ""}, {"main": "05.11 Tangent Function Transformations", "live": ""}, {"main": "05.12 Investigating Periodic Functions Practice Exam", "live": ""}, {"main": "05.13 Investigating Periodic Functions \"Friday Sheet\" AP Practice Assignment", "live": "Unit 5 Review"}, {"main": "05.13 Investigating Periodic Functions \"Friday Sheet\" AP Practice Assignment — continued", "live": ""}, {"main": "05.14 Investigating Periodic Functions Exam", "live": ""}, {"main": "06.00 Investigating Solutions of Trigonometric and Polar Functions Introduction", "live": ""}, {"main": "06.01 Inverse Trigonometric Functions", "live": ""}, {"main": "06.02 Trigonometric Equations", "live": "Review: 6.01-6.04"}, {"main": "06.03 Trigonometric Inequalities", "live": ""}, {"main": "06.04 Secant, Cosecant, and Cotangent Function Behavior", "live": ""}, {"main": "06.05 Investigating Solutions of Trigonometric and Polar Functions Mid-Module Check", "live": ""}, {"main": "06.06 Rewriting Trigonometric Functions", "live": ""}, {"main": "06.07 Solving Equations Using Trigonometric Identities", "live": "Review: 6.06-6.07"}, {"main": "Flex Day (catch-up / extension)", "live": ""}, {"main": "Flex Day (catch-up / extension)", "live": ""}, {"main": "06.08 Trigonometry and Polar Coordinates", "live": ""}, {"main": "06.09 Graphing Polar Functions", "live": ""}, {"main": "06.10 Rates of Change in Polar Functions", "live": "Review: 6.08-6.10, AP Prep Page Recording; Unit 6 Review Recording"}, {"main": "06.11 Investigating Solutions of Trigonometric and Polar Functions Practice Exam", "live": ""}, {"main": "06.12 Investigating Solutions of Trigonometric and Polar Functions Discussion-Based Assessment", "live": ""}, {"main": "06.12 Investigating Solutions of Trigonometric and Polar Functions Discussion-Based Assessment — continued", "live": ""}, {"main": "06.13 Investigating Solutions of Trigonometric and Polar Functions Exam", "live": ""}, {"main": "Semester Review", "live": ""}, {"main": "Semester Review — continued", "live": ""}, {"main": "06.14 Segment Two Exam", "live": ""}, {"main": "AP Exam Prep", "live": ""}, {"main": "AP Exam Prep", "live": ""}, {"main": "AP Exam Prep", "live": "Optional AP Review LiveClass"}, {"main": "AP Exam Prep", "live": ""}, {"main": "AP Exam Prep", "live": ""}, {"main": "AP Exam Prep", "live": ""}, {"main": "AP Exam Prep", "live": ""}, {"main": "AP Exam Prep", "live": "Optional AP Review LiveClass"}, {"main": "AP Exam Prep", "live": ""}, {"main": "AP Exam Prep", "live": ""}, {"main": "AP Exam Prep", "live": ""}, {"main": "AP Precalculus Exam Day", "live": ""}, {"main": "Flex Day (catch-up / extension)", "live": ""}, {"main": "Flex Day (catch-up / extension)", "live": ""}, {"main": "07.00 Supplemental Introduction\n07.01 Parametric Functions and Motion", "live": ""}, {"main": "07.02 Implicitly Defined Functions", "live": ""}, {"main": "07.03 Conic Sections", "live": ""}, {"main": "07.04 Parametrization of Implicitly Defined Functions", "live": "Office Hours"}, {"main": "07.05 Vectors", "live": ""}, {"main": "07.06 Vector-Valued Functions", "live": ""}, {"main": "07.07 Matrices", "live": ""}, {"main": "07.08 Linear Transformations and Matrices", "live": "Office Hours"}, {"main": "07.09 Matrices as Functions", "live": ""}, {"main": "07.10 Matrices Modeling Contexts", "live": ""}];
+
+  const TERM_DEFAULTS = {
+    s1: {
+      label: "Semester 1",
+      startDate: "2026-09-14",
+      liveWeekday: 3,
+      cutoffDate: "2027-01-15",
+      deadlineDate: "2027-02-01",
+      endDate: "2027-02-03",
+      noSchool: [
+        { start: "2026-10-09", end: "2026-10-09", reason: "No School (Fri)" },
+        { start: "2026-11-11", end: "2026-11-11", reason: "Veterans Day" },
+        { start: "2026-11-23", end: "2026-11-27", reason: "Thanksgiving Break" },
+        { start: "2026-12-21", end: "2027-01-01", reason: "Winter Break" },
+        { start: "2027-01-18", end: "2027-01-18", reason: "MLK Day" }
+      ],
+      curriculum: null,
+    },
+    s2: {
+      label: "Semester 2",
+      startDate: "2027-02-08",
+      liveWeekday: 3,
+      cutoffDate: "2027-06-01",
+      deadlineDate: "2027-06-15",
+      endDate: "2027-06-24",
+      noSchool: [
+        { start: "2027-02-15", end: "2027-02-15", reason: "Presidents' Day" },
+        { start: "2027-04-05", end: "2027-04-09", reason: "Spring Break" },
+        { start: "2027-05-31", end: "2027-05-31", reason: "Memorial Day" },
+        { start: "2027-06-18", end: "2027-06-18", reason: "Juneteenth" }
+      ],
+      curriculum: null,
+    },
+  };
+  TERM_DEFAULTS.s1.curriculum = DEFAULT_CURRICULUM_S1.map(it => ({ main: it.main, live: it.live }));
+  TERM_DEFAULTS.s2.curriculum = DEFAULT_CURRICULUM_S2.map(it => ({ main: it.main, live: it.live }));
+
+  const DEFAULT_CURRICULUM_BY_SEM = { s1: DEFAULT_CURRICULUM_S1, s2: DEFAULT_CURRICULUM_S2 };
+
+  const DEFAULTS = {
+    current: "s1",
+    s1: TERM_DEFAULTS.s1,
+    s2: TERM_DEFAULTS.s2,
+  };
+
+  const COURSE_ID = (() => {
+    const params = new URLSearchParams(window.location.search);
+    const explicit = params.get("course") || window.PACING_COURSE_ID || "default-course";
+    return String(explicit).trim().toLowerCase().replace(/[^a-z0-9-_]+/g, "-");
+  })();
+  const SHARED_API_URL = (() => {
+    const params = new URLSearchParams(window.location.search);
+    const explicitApi = params.get("api") || window.PACING_API_URL || "";
+    return String(explicitApi).trim();
+  })();
+  const STORAGE_KEY = `precalc-pacing-builder-state-v3-${COURSE_ID}`;
+  const LEGACY_STORAGE_KEY = "precalc-pacing-builder-state-v2";
+
+  function parseISO(s) {
+    if (!s) return null;
+    const [y, m, d] = s.split("-").map(Number);
+    return new Date(y, m - 1, d);
+  }
+  function toISO(date) {
+    const y = date.getFullYear();
+    const m = String(date.getMonth() + 1).padStart(2, "0");
+    const d = String(date.getDate()).padStart(2, "0");
+    return `${y}-${m}-${d}`;
+  }
+  function addDays(date, n) {
+    const d = new Date(date);
+    d.setDate(d.getDate() + n);
+    return d;
+  }
+  function weekdayMon1(date) {
+    const g = date.getDay(); // 0=Sun..6=Sat
+    return ((g + 6) % 7) + 1; // 1=Mon..7=Sun
+  }
+  function sameDate(a, b) {
+    return a && b && a.getFullYear() === b.getFullYear() && a.getMonth() === b.getMonth() && a.getDate() === b.getDate();
+  }
+  function isBetween(d, a, b) { return d >= a && d <= b; }
+
+  function validTerm(t) {
+    return t && typeof t.startDate === "string" && Array.isArray(t.noSchool) && Array.isArray(t.curriculum);
+  }
+
+  function loadStateFromLocal() {
+    try {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if (raw) {
+        const parsed = JSON.parse(raw);
+        if (parsed && validTerm(parsed.s1) && validTerm(parsed.s2)) {
+          if (parsed.current !== "s1" && parsed.current !== "s2") parsed.current = "s1";
+          return parsed;
+        }
+      }
+      // Migrate a pre-two-semester (v2) save into the new s1 slot, so returning
+      // users don't lose date/curriculum edits made before Semester 2 existed.
+      const legacyRaw = localStorage.getItem(LEGACY_STORAGE_KEY);
+      if (legacyRaw) {
+        const legacy = JSON.parse(legacyRaw);
+        if (legacy && typeof legacy.startDate === "string" && Array.isArray(legacy.noSchool)) {
+          const merged = structuredClone(DEFAULTS);
+          merged.s1 = {
+            label: "Semester 1",
+            startDate: legacy.startDate,
+            liveWeekday: legacy.liveWeekday || 3,
+            cutoffDate: legacy.cutoffDate,
+            deadlineDate: legacy.deadlineDate,
+            endDate: legacy.endDate,
+            noSchool: legacy.noSchool,
+            curriculum: (Array.isArray(legacy.curriculum) && legacy.curriculum.length) ? legacy.curriculum : structuredClone(DEFAULTS.s1.curriculum),
+          };
+          merged.current = "s1";
+          return merged;
+        }
+      }
+      return structuredClone(DEFAULTS);
+    } catch (e) {
+      return structuredClone(DEFAULTS);
+    }
+  }
+
+  function saveStateLocally(state) {
+    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch (e) { /* ignore */ }
+  }
+
+  async function fetchRemoteState() {
+    if (!SHARED_API_URL) return null;
+    try {
+      const response = await fetch(`${SHARED_API_URL}?course=${encodeURIComponent(COURSE_ID)}`, { cache: "no-store" });
+      if (!response.ok) return null;
+      const payload = await response.json();
+      const parsed = payload && payload.state ? payload.state : payload;
+      if (parsed && validTerm(parsed.s1) && validTerm(parsed.s2)) {
+        if (parsed.current !== "s1" && parsed.current !== "s2") parsed.current = "s1";
+        return parsed;
+      }
+      return null;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  async function saveStateRemotely(state) {
+    if (!SHARED_API_URL) return;
+    try {
+      await fetch(SHARED_API_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ courseId: COURSE_ID, state })
+      });
+    } catch (e) {
+      // Fall back to local save if remote sync fails so the app still works offline.
+      saveStateLocally(state);
+    }
+  }
+
+  function saveState(state) {
+    if (SHARED_API_URL) {
+      saveStateRemotely(state);
+      return;
+    }
+    saveStateLocally(state);
+  }
+
+  let state = loadStateFromLocal();
+  function active() { return state[state.current]; }
+
+  // ---------- UI: form population ----------
+  const els = {
+    startDate: document.getElementById("startDate"),
+    liveWeekday: document.getElementById("liveWeekday"),
+    cutoffDate: document.getElementById("cutoffDate"),
+    deadlineDate: document.getElementById("deadlineDate"),
+    endDate: document.getElementById("endDate"),
+    deadlineLabel: document.getElementById("deadlineLabel"),
+    endLabel: document.getElementById("endLabel"),
+    setupTitle: document.getElementById("setupTitle"),
+    curriculumEditorTitle: document.getElementById("curriculumEditorTitle"),
+    noSchoolList: document.getElementById("noSchoolList"),
+    addRowBtn: document.getElementById("addRowBtn"),
+    generateBtn: document.getElementById("generateBtn"),
+    resetBtn: document.getElementById("resetBtn"),
+    printBtn: document.getElementById("printBtn"),
+    statusBox: document.getElementById("statusBox"),
+    calendarOutput: document.getElementById("calendarOutput"),
+    curriculumEditor: document.getElementById("curriculumEditor"),
+    curriculumToggleBtn: document.getElementById("curriculumToggleBtn"),
+    curriculumList: document.getElementById("curriculumList"),
+    addCurriculumBtn: document.getElementById("addCurriculumBtn"),
+    curriculumResetBtn: document.getElementById("curriculumResetBtn"),
+    semTabs: Array.from(document.querySelectorAll(".sem-tab")),
+  };
+
+  function renderNoSchoolRows() {
+    const cfg = active();
+    els.noSchoolList.innerHTML = "";
+    cfg.noSchool.forEach((row, idx) => {
+      const div = document.createElement("div");
+      div.className = "noschool-row";
+      div.innerHTML = `
+        <input type="date" value="${row.start || ""}" data-idx="${idx}" data-field="start">
+        <input type="date" value="${row.end || ""}" data-idx="${idx}" data-field="end">
+        <button type="button" class="icon-btn" data-remove="${idx}" title="Remove this range">✕</button>
+        <input type="text" placeholder="Reason (e.g. Winter Break)" value="${(row.reason || "").replace(/"/g,'&quot;')}" data-idx="${idx}" data-field="reason">
+      `;
+      els.noSchoolList.appendChild(div);
+    });
+    els.noSchoolList.querySelectorAll("input").forEach(inp => {
+      inp.addEventListener("change", (e) => {
+        const idx = Number(e.target.dataset.idx);
+        const field = e.target.dataset.field;
+        active().noSchool[idx][field] = e.target.value;
+      });
+    });
+    els.noSchoolList.querySelectorAll("[data-remove]").forEach(btn => {
+      btn.addEventListener("click", (e) => {
+        const idx = Number(e.target.dataset.remove);
+        active().noSchool.splice(idx, 1);
+        renderNoSchoolRows();
+      });
+    });
+  }
+
+  function renderCurriculumRows() {
+    const cfg = active();
+    els.curriculumList.innerHTML = "";
+    const frag = document.createDocumentFragment();
+    cfg.curriculum.forEach((item, idx) => {
+      const div = document.createElement("div");
+      div.className = "curriculum-row";
+      div.innerHTML = `
+        <span class="idx">${idx + 1}</span>
+        <textarea data-idx="${idx}" data-field="main" placeholder="Lesson content...">${escapeHtml(item.main || "")}</textarea>
+        <input type="text" data-idx="${idx}" data-field="live" placeholder="e.g. 1.01" value="${escapeHtml(item.live || "")}">
+        <span class="row-actions">
+          <button type="button" data-move-up="${idx}" title="Move earlier" ${idx === 0 ? "disabled" : ""}>↑ Up</button>
+          <button type="button" data-move-down="${idx}" title="Move later" ${idx === cfg.curriculum.length - 1 ? "disabled" : ""}>↓ Down</button>
+          <button type="button" class="icon-btn" data-remove-curr="${idx}" title="Remove this day">✕ Remove</button>
+        </span>
+      `;
+      frag.appendChild(div);
+    });
+    els.curriculumList.appendChild(frag);
+
+    els.curriculumList.querySelectorAll("textarea,input[type='text']").forEach(inp => {
+      inp.addEventListener("change", (e) => {
+        const idx = Number(e.target.dataset.idx);
+        const field = e.target.dataset.field;
+        active().curriculum[idx][field] = e.target.value;
+      });
+    });
+    els.curriculumList.querySelectorAll("[data-remove-curr]").forEach(btn => {
+      btn.addEventListener("click", (e) => {
+        const idx = Number(e.target.dataset.removeCurr);
+        active().curriculum.splice(idx, 1);
+        renderCurriculumRows();
+      });
+    });
+    els.curriculumList.querySelectorAll("[data-move-up]").forEach(btn => {
+      btn.addEventListener("click", (e) => {
+        const idx = Number(e.target.dataset.moveUp);
+        const c = active().curriculum;
+        if (idx > 0) {
+          [c[idx - 1], c[idx]] = [c[idx], c[idx - 1]];
+          renderCurriculumRows();
+        }
+      });
+    });
+    els.curriculumList.querySelectorAll("[data-move-down]").forEach(btn => {
+      btn.addEventListener("click", (e) => {
+        const idx = Number(e.target.dataset.moveDown);
+        const c = active().curriculum;
+        if (idx < c.length - 1) {
+          [c[idx + 1], c[idx]] = [c[idx], c[idx + 1]];
+          renderCurriculumRows();
+        }
+      });
+    });
+  }
+
+  function populateForm() {
+    const cfg = active();
+    els.startDate.value = cfg.startDate;
+    els.liveWeekday.value = String(cfg.liveWeekday);
+    els.cutoffDate.value = cfg.cutoffDate;
+    els.deadlineDate.value = cfg.deadlineDate;
+    els.endDate.value = cfg.endDate;
+    els.deadlineLabel.textContent = `${cfg.label} deadline`;
+    els.endLabel.textContent = `End of ${cfg.label.toLowerCase()}`;
+    els.setupTitle.textContent = `${cfg.label} Setup`;
+    els.curriculumEditorTitle.textContent = `Curriculum Sequence — ${cfg.label}`;
+    els.resetBtn.textContent = `Reset ${cfg.label.toLowerCase()} dates`;
+    els.semTabs.forEach(btn => btn.classList.toggle("active", btn.dataset.sem === state.current));
+    renderNoSchoolRows();
+    renderCurriculumRows();
+  }
+
+  function readFormIntoState() {
+    const cfg = active();
+    const d = DEFAULTS[state.current];
+    cfg.startDate = els.startDate.value || d.startDate;
+    cfg.liveWeekday = Number(els.liveWeekday.value) || 3;
+    cfg.cutoffDate = els.cutoffDate.value || d.cutoffDate;
+    cfg.deadlineDate = els.deadlineDate.value || d.deadlineDate;
+    cfg.endDate = els.endDate.value || d.endDate;
+    // noSchool and curriculum are already kept live-updated via change handlers
+  }
+
+  function switchSemester(key) {
+    if (key !== "s1" && key !== "s2") return;
+    if (state.current === key) return;
+    state.current = key;
+    saveState(state);
+    populateForm();
+    generate();
+  }
+  els.semTabs.forEach(btn => {
+    btn.addEventListener("click", () => switchSemester(btn.dataset.sem));
+  });
+
+  els.addRowBtn.addEventListener("click", () => {
+    active().noSchool.push({ start: "", end: "", reason: "" });
+    renderNoSchoolRows();
+  });
+  els.resetBtn.addEventListener("click", () => {
+    const cfg = active();
+    const keepCurriculum = cfg.curriculum;
+    const fresh = structuredClone(DEFAULTS[state.current]);
+    fresh.curriculum = keepCurriculum; // date reset shouldn't discard curriculum edits
+    state[state.current] = fresh;
+    populateForm();
+    generate();
+  });
+  els.curriculumResetBtn.addEventListener("click", () => {
+    const cfg = active();
+    const original = DEFAULT_CURRICULUM_BY_SEM[state.current];
+    if (!confirm(`Replace your ${cfg.label.toLowerCase()} curriculum edits with the original ${original.length}-item sequence?`)) return;
+    cfg.curriculum = structuredClone(original);
+    renderCurriculumRows();
+  });
+  els.addCurriculumBtn.addEventListener("click", () => {
+    active().curriculum.push({ main: "", live: "" });
+    renderCurriculumRows();
+    els.curriculumList.scrollTop = els.curriculumList.scrollHeight;
+  });
+  els.curriculumToggleBtn.addEventListener("click", () => {
+    const willShow = els.curriculumEditor.hidden;
+    els.curriculumEditor.hidden = !willShow;
+    els.curriculumToggleBtn.textContent = willShow ? "Hide Curriculum Editor" : "Edit Curriculum";
+  });
+  els.printBtn.addEventListener("click", () => window.print());
+  els.generateBtn.addEventListener("click", () => { readFormIntoState(); generate(); });
+
+  const WEEKDAY_NAMES = ["", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
+
+  // ---------- Engine ----------
+  function buildDayIndex(startDate, noSchoolRanges, maxDays) {
+    const ranges = noSchoolRanges
+      .filter(r => r.start && r.end)
+      .map(r => ({ start: parseISO(r.start), end: parseISO(r.end), reason: r.reason || "No School" }));
+
+    const days = [];
+    let seq = 0;
+    for (let i = 0; i < maxDays; i++) {
+      const date = addDays(startDate, i);
+      const wd = weekdayMon1(date);
+      const isWeekday = wd <= 5;
+      let noSchoolReason = null;
+      for (const r of ranges) {
+        if (isBetween(date, r.start, r.end)) { noSchoolReason = r.reason; break; }
+      }
+      const isSchoolDay = isWeekday && !noSchoolReason;
+      if (isSchoolDay) seq++;
+      days.push({ date, wd, isWeekday, noSchoolReason, isSchoolDay, seq });
+    }
+    return days;
+  }
+
+  function dayLookup(dayIndex, startDate, date) {
+    const idx = Math.round((date - startDate) / 86400000);
+    if (idx < 0 || idx >= dayIndex.length) return null;
+    return dayIndex[idx];
+  }
+
+  function classify(day, cfg) {
+    if (!day) return { cls: "outmonth", lines: [] };
+    if (day.noSchoolReason) {
+      return { cls: "noschool", lines: [`NO SCHOOL — ${day.noSchoolReason}`] };
+    }
+
+    let policyLine = null;
+    if (sameDate(day.date, cfg.endDate)) policyLine = `END OF ${cfg.semLabelUpper}`;
+    else if (sameDate(day.date, addDays(cfg.deadlineDate, 1))) policyLine = "Teacher grading / finalization";
+    else if (sameDate(day.date, cfg.deadlineDate)) policyLine = `${cfg.semLabelUpper} STUDENT DEADLINE`;
+    else if (day.date > cfg.cutoffDate && day.date < cfg.deadlineDate) policyLine = "Catch-up / Missing Work / Retakes / Support";
+    else if (sameDate(day.date, cfg.cutoffDate)) policyLine = "Final day for new assignments / Segment exam completion";
+
+    if (day.isSchoolDay && day.seq >= 1 && day.seq <= cfg.curriculum.length) {
+      const item = cfg.curriculum[day.seq - 1];
+      const lines = (item.main || "").split("\n");
+      if (policyLine) lines.push(`[${policyLine}]`);
+      let cls = "normal";
+      let liveLine = null;
+      if (item.live) {
+        const aligned = day.wd === cfg.liveWeekday;
+        cls = aligned ? "liveclass" : "flagged";
+        liveLine = `LiveClass: ${item.live}${aligned ? "" : `  (lands on ${WEEKDAY_NAMES[day.wd] || "a non-target day"})`}`;
+      } else if (policyLine) {
+        cls = "policy";
+      }
+      return { cls, lines, liveLine };
+    }
+    if (policyLine) {
+      return { cls: "policy", lines: [policyLine] };
+    }
+    return { cls: "normal", lines: [] };
+  }
+
+  function monthAnchor(year, month0, offset) {
+    const first = new Date(year, month0 + offset, 1);
+    const wd = weekdayMon1(first);
+    const gridStart = addDays(first, -(wd - 1));
+    const last = new Date(year, month0 + offset + 1, 0);
+    const wdLast = weekdayMon1(last);
+    const gridEnd = addDays(last, (5 - wdLast + 7) % 7);
+    const label = first.toLocaleDateString(undefined, { month: "long", year: "numeric" });
+    return { first, gridStart, gridEnd, label };
+  }
+
+  function generate() {
+    const active_cfg = active();
+    const startDate = parseISO(active_cfg.startDate);
+    const cutoffDate = parseISO(active_cfg.cutoffDate);
+    const deadlineDate = parseISO(active_cfg.deadlineDate);
+    const endDate = parseISO(active_cfg.endDate);
+
+    if (!startDate || !cutoffDate || !deadlineDate || !endDate) {
+      els.statusBox.textContent = "Please fill in all four key dates.";
+      els.statusBox.classList.add("flagged");
+      return;
+    }
+
+    saveState(state);
+
+    const original = DEFAULT_CURRICULUM_BY_SEM[state.current];
+    const activeCurriculum = (active_cfg.curriculum && active_cfg.curriculum.length) ? active_cfg.curriculum : original;
+    const dayIndex = buildDayIndex(startDate, active_cfg.noSchool, 260);
+    const cfg = {
+      cutoffDate, deadlineDate, endDate,
+      liveWeekday: active_cfg.liveWeekday,
+      curriculum: activeCurriculum,
+      semLabelUpper: active_cfg.label.toUpperCase(),
+    };
+
+    let flagCount = 0;
+    let maxDisplayableSeq = 0; // last curriculum slot that lands on/before the cutoff date and can actually show
+    for (const day of dayIndex) {
+      if (day.isSchoolDay && day.date <= cutoffDate) maxDisplayableSeq = day.seq;
+      if (day.isSchoolDay && day.seq >= 1 && day.seq <= activeCurriculum.length) {
+        const item = activeCurriculum[day.seq - 1];
+        if (item.live && day.wd !== cfg.liveWeekday) flagCount++;
+      }
+    }
+    const overflowCount = Math.max(0, activeCurriculum.length - maxDisplayableSeq);
+
+    const messages = [];
+    if (overflowCount > 0) {
+      messages.push(
+        `<strong>${overflowCount} curriculum item${overflowCount === 1 ? "" : "s"}</strong> ` +
+        `didn't fit by your "No new assignments after" date and won't appear on the calendar. ` +
+        `Push that date later, move your start date earlier, or trim content.`
+      );
+    }
+    if (flagCount === 0) {
+      messages.push(`All LiveClass sessions land on <strong>${WEEKDAY_NAMES[active_cfg.liveWeekday]}</strong>.`);
+    } else {
+      messages.push(
+        `<span class="count">${flagCount}</span> LiveClass session${flagCount === 1 ? "" : "s"} land off ` +
+        `${WEEKDAY_NAMES[active_cfg.liveWeekday]} — check the orange cells below.`
+      );
+    }
+    els.statusBox.classList.toggle("flagged", overflowCount > 0 || flagCount > 0);
+    els.statusBox.innerHTML = messages.join("<br>");
+
+    const y0 = startDate.getFullYear();
+    const m0 = startDate.getMonth();
+    let html = "";
+    for (let mo = 0; mo < 6; mo++) {
+      const { gridStart, gridEnd, label } = monthAnchor(y0, m0, mo);
+      html += `<div class="month-block"><h3>${label}</h3><div class="cal-scroll"><table class="cal"><thead><tr>`;
+      ["Monday","Tuesday","Wednesday","Thursday","Friday"].forEach(n => html += `<th>${n}</th>`);
+      html += `</tr></thead><tbody>`;
+      for (let ws = new Date(gridStart); ws <= gridEnd; ws = addDays(ws, 7)) {
+        html += "<tr>";
+        for (let d = 0; d < 5; d++) {
+          const date = addDays(ws, d);
+          const day = dayLookup(dayIndex, startDate, date);
+          const info = classify(day, cfg);
+          const outmonth = date.getMonth() !== new Date(y0, m0 + mo, 1).getMonth();
+          const classes = [info.cls];
+          if (outmonth && info.cls === "normal") classes.push("outmonth");
+          html += `<td class="${classes.join(" ")}">`;
+          html += `<span class="daynum">${date.getDate()}</span>`;
+          if (info.lines && info.lines.length) {
+            html += `<span class="content">${info.lines.map(escapeHtml).join("\n")}`;
+            if (info.liveLine) html += `<span class="live-tag">${escapeHtml(info.liveLine)}</span>`;
+            html += `</span>`;
+          }
+          html += `</td>`;
+        }
+        html += "</tr>";
+      }
+      html += `</tbody></table></div></div>`;
+    }
+    els.calendarOutput.innerHTML = html;
+  }
+
+  function escapeHtml(s) {
+    return String(s).replace(/[&<>]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;" }[c]));
+  }
+
+  async function initApp() {
+    if (SHARED_API_URL) {
+      const remoteState = await fetchRemoteState();
+      if (remoteState) {
+        state = remoteState;
+      }
+    }
+    populateForm();
+    generate();
+  }
+
+  // ---------- init ----------
+  initApp();
+</script>
+
+</body>
+</html>
